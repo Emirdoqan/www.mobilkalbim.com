@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Segital Sesli Chat & Radyo Portalı</title>
+    <title>mobilkalbim.com - Türkiye'nin Sesli Sohbet ve Müzik Portalı</title>
     <style>
         * {
             box-sizing: border-box;
@@ -13,323 +13,294 @@
         }
 
         body {
-            background-color: #0f172a;
-            color: #f8fafc;
-            display: flex;
+            background: radial-gradient(circle at center, #1b0f1b 0%, #0a050a 100%);
             height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            color: #ffffff;
             overflow: hidden;
         }
 
-        /* Sol Menü / Yan Panel */
-        .sidebar {
-            width: 260px;
-            background-color: #1e293b;
-            padding: 20px;
+        /* Üst Header / Navigasyon */
+        .top-bar {
+            width: 100%;
+            padding: 15px 30px;
             display: flex;
-            flex-direction: column;
-            border-right: 1px solid #334155;
-        }
-
-        .brand {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #38bdf8;
-            margin-bottom: 30px;
-            display: flex;
+            justify-content: space-between;
             align-items: center;
-            gap: 10px;
+            background: rgba(20, 10, 20, 0.6);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 0, 85, 0.2);
         }
 
-        .menu-title {
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            color: #64748b;
-            margin-bottom: 10px;
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 900;
+            letter-spacing: 1px;
+            color: #ff0055;
+            text-shadow: 0 0 12px rgba(255, 0, 85, 0.6);
         }
 
-        .room-list {
-            list-style: none;
+        .logo span {
+            color: #ffffff;
+        }
+
+        .top-links a {
+            color: #cccccc;
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 0.9rem;
+            transition: 0.2s;
+        }
+
+        .top-links a:hover {
+            color: #ff0055;
+        }
+
+        /* Arka Plan Parlama Efekti */
+        .glow-effect {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: rgba(255, 0, 85, 0.12);
+            border-radius: 50%;
+            filter: blur(100px);
+            z-index: 0;
+        }
+
+        /* Orta Giriş Kartı */
+        .main-container {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .panel-card {
+            background: rgba(25, 15, 25, 0.85);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 0, 85, 0.3);
+            width: 400px;
+            padding: 35px 30px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8), 0 0 20px rgba(255, 0, 85, 0.15);
+            text-align: center;
+        }
+
+        .panel-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: #ffffff;
+        }
+
+        .panel-subtitle {
+            font-size: 0.85rem;
+            color: #a090a0;
+            margin-bottom: 25px;
+        }
+
+        /* Nick Avatarları */
+        .avatar-selection {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
             margin-bottom: 20px;
         }
 
-        .room-item {
-            padding: 12px;
-            border-radius: 8px;
-            cursor: pointer;
-            margin-bottom: 5px;
-            transition: 0.2s;
+        .avatar-box {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background-color: #2a152a;
+            border: 2px solid transparent;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .room-item:hover, .room-item.active {
-            background-color: #334155;
-            color: #38bdf8;
-        }
-
-        .room-badge {
-            background-color: #0284c7;
-            color: white;
-            font-size: 0.75rem;
-            padding: 2px 8px;
-            border-radius: 12px;
-        }
-
-        /* Orta Panel - Ses & Görsel Alanı */
-        .main-content {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            padding: 20px;
-            background: linear-gradient(180deg, #0f172a 0%, #1e1b4b 100%);
-        }
-
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-bottom: 15px;
-            border-bottom: 1px solid #334155;
-        }
-
-        .visualizer-container {
-            display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
-            flex: 1;
-        }
-
-        /* Ses Dalgası Simülasyonu */
-        .wave-container {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            height: 80px;
-            margin-bottom: 20px;
-        }
-
-        .bar {
-            width: 8px;
-            background-color: #38bdf8;
-            border-radius: 4px;
-            animation: pulse 1.2s infinite ease-in-out;
-        }
-
-        .bar:nth-child(1) { height: 30px; animation-delay: 0.1s; }
-        .bar:nth-child(2) { height: 60px; animation-delay: 0.3s; }
-        .bar:nth-child(3) { height: 40px; animation-delay: 0.2s; }
-        .bar:nth-child(4) { height: 75px; animation-delay: 0.4s; }
-        .bar:nth-child(5) { height: 50px; animation-delay: 0.1s; }
-        .bar:nth-child(6) { height: 20px; animation-delay: 0.5s; }
-
-        @keyframes pulse {
-            0%, 100% { transform: scaleY(0.4); }
-            50% { transform: scaleY(1.1); }
-        }
-
-        /* Kontrol Paneli */
-        .controls {
-            background-color: #1e293b;
-            padding: 15px 25px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 15px;
-        }
-
-        .btn {
-            background-color: #0284c7;
-            color: white;
-            border: none;
-            padding: 10px 18px;
-            border-radius: 6px;
+            font-size: 1.4rem;
             cursor: pointer;
-            font-weight: bold;
+            transition: all 0.2s ease;
+        }
+
+        .avatar-box:hover, .avatar-box.active {
+            border-color: #ff0055;
+            transform: scale(1.1);
+            box-shadow: 0 0 12px rgba(255, 0, 85, 0.5);
+        }
+
+        /* Input Form */
+        .form-group {
+            margin-bottom: 18px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.8rem;
+            color: #d0c0d0;
+            margin-bottom: 6px;
+            font-weight: 600;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px 15px;
+            background: #120812;
+            border: 1px solid #3a203a;
+            border-radius: 8px;
+            color: #ffffff;
+            font-size: 0.95rem;
+            outline: none;
             transition: 0.2s;
         }
 
-        .btn:hover {
-            background-color: #0369a1;
+        .form-input:focus {
+            border-color: #ff0055;
+            box-shadow: 0 0 8px rgba(255, 0, 85, 0.4);
         }
 
-        .btn-danger {
-            background-color: #e11d48;
-        }
-
-        .btn-danger:hover {
-            background-color: #be123c;
-        }
-
-        /* Sağ Panel - Canlı Sohbet */
-        .chat-sidebar {
-            width: 320px;
-            background-color: #1e293b;
-            display: flex;
-            flex-direction: column;
-            border-left: 1px solid #334155;
-        }
-
-        .chat-header {
-            padding: 15px;
-            border-bottom: 1px solid #334155;
-            font-weight: bold;
-        }
-
-        .chat-messages {
-            flex: 1;
-            padding: 15px;
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .message {
-            background-color: #334155;
-            padding: 10px 12px;
+        /* Giriş Butonları */
+        .btn-submit {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #ff0055 0%, #b3003b 100%);
+            border: none;
             border-radius: 8px;
-            font-size: 0.9rem;
-        }
-
-        .message .username {
+            color: #ffffff;
+            font-size: 1rem;
             font-weight: bold;
-            color: #38bdf8;
+            cursor: pointer;
+            transition: 0.2s;
+            box-shadow: 0 4px 15px rgba(255, 0, 85, 0.4);
+            margin-top: 5px;
+        }
+
+        .btn-submit:hover {
+            background: linear-gradient(135deg, #e6004c 0%, #990033 100%);
+            transform: translateY(-2px);
+        }
+
+        .btn-guest {
+            background: transparent;
+            border: 1px solid #3a203a;
+            color: #b0a0b0;
+            margin-top: 10px;
+            box-shadow: none;
+        }
+
+        .btn-guest:hover {
+            background: rgba(255, 0, 85, 0.1);
+            color: #ffffff;
+            border-color: #ff0055;
+        }
+
+        /* Çevrimiçi Sayaç */
+        .online-status {
+            margin-top: 22px;
             font-size: 0.8rem;
-            margin-bottom: 3px;
-        }
-
-        .chat-input-area {
-            padding: 15px;
-            border-top: 1px solid #334155;
+            color: #00ffcc;
             display: flex;
-            gap: 8px;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
         }
 
-        .chat-input {
-            flex: 1;
-            background-color: #0f172a;
-            border: 1px solid #334155;
-            padding: 10px;
-            border-radius: 6px;
-            color: white;
-            outline: none;
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #00ffcc;
+            border-radius: 50%;
+            box-shadow: 0 0 8px #00ffcc;
         }
 
-        .chat-input:focus {
-            border-color: #38bdf8;
+        /* Alt Bilgi (Footer) */
+        .footer {
+            padding: 15px;
+            font-size: 0.75rem;
+            color: #665566;
+            text-align: center;
         }
     </style>
 </head>
 <body>
 
-    <!-- Sol Kanal Listesi -->
-    <div class="sidebar">
-        <div class="brand">🎙️ Mobilkalbim</div>
-        <div class="menu-title">Sesli Kanallar</div>
-        <ul class="room-list">
-            <li class="room-item active">
-                <span>🎵 Müzik Odası</span>
-                <span class="room-badge">12</span>
-            </li>
-            <li class="room-item">
-                <span>💬 Genel Sohbet</span>
-                <span class="room-badge">5</span>
-            </li>
-            <li class="room-item">
-                <span>📻 Canlı Yayın</span>
-                <span class="room-badge">28</span>
-            </li>
-        </ul>
-    </div>
-
-    <!-- Orta Canlı Yayın & Ses Alanı -->
-    <div class="main-content">
-        <div class="header">
-            <h2>Aktif Oda: Müzik Odası</h2>
-            <span style="color: #22c55e;">● Yayın Canlı</span>
-        </div>
-
-        <div class="visualizer-container">
-            <div class="wave-container">
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-            </div>
-            <p id="status-text">Yayın dinleniyor...</p>
-        </div>
-
-        <div class="controls">
-            <button class="btn" onclick="toggleMic()" id="mic-btn">🎤 Mikrofonu Aç</button>
-            <button class="btn btn-danger">🚫 Yayından Çık</button>
+    <div class="top-bar">
+        <div class="logo">Sesli<span>mobilkalbim.com</span></div>
+        <div class="top-links">
+            <a href="#">Ana Sayfa</a>
+            <a href="#">Oda Listesi</a>
+            <a href="#">Yardım / İletişim</a>
         </div>
     </div>
 
-    <!-- Sağ Sohbet Alanı -->
-    <div class="chat-sidebar">
-        <div class="chat-header">Oda Yazışmaları</div>
-        <div class="chat-messages" id="chat-box">
-            <div class="message">
-                <div class="username">Rotinda</div>
-                <div>Herkese selamlar, hoş geldiniz!</div>
+    <div class="glow-effect"></div>
+
+    <div class="main-container">
+        <div class="panel-card">
+            <div class="panel-title">Sohbet Panelimiz</div>
+            <div class="panel-subtitle">Sesli & Görüntülü Sohbet Odalarına Bağlanın</div>
+
+            <!-- Avatar Seçim Alanı -->
+            <div class="avatar-selection">
+                <div class="avatar-box active" onclick="pickAvatar(this)">👑</div>
+                <div class="avatar-box" onclick="pickAvatar(this)">🎧</div>
+                <div class="avatar-box" onclick="pickAvatar(this)">🎤</div>
+                <div class="avatar-box" onclick="pickAvatar(this)">😎</div>
             </div>
-            <div class="message">
-                <div class="username">AkaSya</div>
-                <div>Harika bir yayın oluyor, elinize sağlık.</div>
+
+            <form onsubmit="enterSite(event)">
+                <div class="form-group">
+                    <label for="nickname">Kullanıcı Adı / Rumuz</label>
+                    <input type="text" id="nickname" class="form-input" placeholder="Rumuzunuzu yazınız..." required autocomplete="off">
+                </div>
+
+                <div class="form-group">
+                    <label for="room-select">Giriş Yapılacak Kanal</label>
+                    <select id="room-select" class="form-input">
+                        <option value="1">🎵 Müzik Odası (Yayın Canlı)</option>
+                        <option value="2">💬 Genel Sohbet Odası</option>
+                        <option value="3">🔥 VIP Odası</option>
+                        <option value="4">💛 Aşk Odası</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn-submit">SOHBETE GİRİŞ YAP</button>
+                <button type="button" class="btn-submit btn-guest" onclick="quickGuest()">Misafir Olarak Katıl</button>
+            </form>
+
+            <div class="online-status">
+                <span class="status-dot"></span>
+                <span>Şu an **54** Kullanıcı Odalarda Aktif</span>
             </div>
         </div>
-        <div class="chat-input-area">
-            <input type="text" class="chat-input" id="chat-input" placeholder="Mesajınızı yazın..." onkeypress="handleKeyPress(event)">
-            <button class="btn" onclick="sendMessage()">Gönder</button>
-        </div>
+    </div>
+
+    <div class="footer">
+        © 2026 mobilkalbim.com - Tüm Hakları Saklıdır. Sesli Sohbet Portal Altyapısı.
     </div>
 
     <script>
-        // Basit Sohbet Gönderme Fonksiyonu
-        function sendMessage() {
-            const input = document.getElementById('chat-input');
-            const messageText = input.value.trim();
-            
-            if (messageText !== '') {
-                const chatBox = document.getElementById('chat-box');
-                const newMessage = document.createElement('div');
-                newMessage.className = 'message';
-                newMessage.innerHTML = `<div class="username">Sen</div><div>${messageText}</div>`;
-                
-                chatBox.appendChild(newMessage);
-                input.value = '';
-                chatBox.scrollTop = chatBox.scrollHeight;
-            }
+        function pickAvatar(element) {
+            document.querySelectorAll('.avatar-box').forEach(el => el.classList.remove('active'));
+            element.classList.add('active');
         }
 
-        function handleKeyPress(e) {
-            if (e.key === 'Enter') {
-                sendMessage();
-            }
+        function enterSite(e) {
+            e.preventDefault();
+            const nick = document.getElementById('nickname').value;
+            alert('Hoş geldin ' + nick + '! mobilkalbim sohbet odalarına yönlendiriliyorsunuz...');
+            // Gerçek panel sayfasına yönlendirmek için:
+            // window.location.href = "panel.html";
         }
 
-        // Mikrofon Aç/Kapat Simülasyonu
-        let isMicOpen = false;
-        function toggleMic() {
-            const btn = document.getElementById('mic-btn');
-            const status = document.getElementById('status-text');
-            
-            isMicOpen = !isMicOpen;
-            if (isMicOpen) {
-                btn.innerText = "🎙️ Mikrofonu Kapat";
-                btn.style.backgroundColor = "#e11d48";
-                status.innerText = "Konuşuyorsunuz (Yayındasınız)...";
-            } else {
-                btn.innerText = "🎤 Mikrofonu Aç";
-                btn.style.backgroundColor = "#0284c7";
-                status.innerText = "Yayın dinleniyor...";
-            }
+        function quickGuest() {
+            const randomGuest = 'Misafir_' + Math.floor(Math.random() * 899 + 100);
+            document.getElementById('nickname').value = randomGuest;
         }
     </script>
 </body>
