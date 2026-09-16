@@ -3,238 +3,232 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MOBİLKALBİM.COM</title>
+    <title>MobilKalbim.com - Türkiye'nin En Kaliteli Sesli Sohbet Platformu</title>
     <style>
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: Arial, Helvetica, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
         }
 
         body {
-            /* Ekrandaki dağ ve yıldızlı gece gökyüzü arka planı */
-            background: #050508 url('https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1920') no-repeat center bottom fixed;
-            background-size: cover;
-            height: 100vh;
+            background: linear-gradient(135deg, #0c0a1a 0%, #16112e 50%, #0a0817 100%);
+            color: #ffffff;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-            overflow: hidden;
-            color: #ffffff;
+            align-items: center;
         }
 
-        /* Üst Siyah Bar */
+        /* Üst Menü (Navbar) */
         header {
             width: 100%;
-            height: 40px;
-            background-color: #000000;
+            max-width: 1200px;
+            padding: 25px 40px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 20px;
-            z-index: 10;
         }
 
+        /* LOGO ALANI - Buradaki yazıyı değiştirebilirsiniz */
         .logo {
-            font-size: 16px;
-            font-weight: bold;
-            letter-spacing: 0.5px;
-        }
-
-        .logo span {
-            color: #ff2a5f;
-        }
-
-        .server-status {
-            font-size: 11px;
-            color: #00ff66;
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
-
-        /* Pembe Kayan Yazı Bandı */
-        .marquee-bar {
-            width: 100%;
-            height: 26px;
-            background-color: #ff2a5f;
-            display: flex;
-            align-items: center;
-            overflow: hidden;
-            white-space: nowrap;
-            z-index: 9;
-        }
-
-        .marquee-text {
-            font-size: 12px;
-            font-weight: bold;
+            font-size: 1.5rem;
+            font-weight: 800;
             color: #ffffff;
-            padding-left: 100%;
-            animation: marquee 20s linear infinite;
+            letter-spacing: -0.5px;
         }
 
-        @keyframes marquee {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(-100%, 0); }
-        }
-
-        /* Orta Alan & Giriş Kutusu */
-        main {
-            flex: 1;
+        nav {
             display: flex;
-            justify-content: center;
             align-items: center;
-            position: relative;
+            gap: 25px;
         }
 
-        /* Ekrandaki Parlayan Pembe Çerçeveli Kutu */
-        .login-card {
-            width: 380px;
-            background-color: #121018;
-            border: 1.5px solid #ff2a5f;
-            border-radius: 12px;
-            box-shadow: 0 0 20px rgba(255, 42, 95, 0.6), inset 0 0 10px rgba(255, 42, 95, 0.2);
-            overflow: hidden;
+        nav a {
+            color: #b0a8ca;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
         }
 
-        /* Pembe Başlık Alanı */
-        .card-header {
-            background-color: #ff2a5f;
+        nav a:hover {
             color: #ffffff;
+        }
+
+        .btn-nav {
+            background: linear-gradient(135deg, #d946ef 0%, #ec4899 100%);
+            color: #ffffff;
+            padding: 10px 22px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(217, 70, 239, 0.4);
+        }
+
+        /* Hero Alanı (Orta Yazılar) */
+        .hero {
             text-align: center;
-            padding: 12px;
-            font-size: 14px;
-            font-weight: bold;
-            letter-spacing: 1px;
-            text-transform: uppercase;
+            margin-top: 50px;
+            max-width: 900px;
+            padding: 0 20px;
         }
 
-        /* Kutu İçeriği */
-        .card-body {
-            padding: 25px 20px;
+        .hero h1 {
+            font-size: 3.2rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+            letter-spacing: -1px;
         }
 
-        .form-group {
-            margin-bottom: 16px;
+        .hero h1 span {
+            color: #d946ef;
         }
 
-        .form-group label {
-            display: block;
-            font-size: 11px;
-            font-weight: bold;
-            color: #cccccc;
-            margin-bottom: 6px;
-            text-transform: uppercase;
+        .hero p {
+            color: #9ca3af;
+            font-size: 1.1rem;
+            margin-bottom: 35px;
         }
 
-        .form-input {
-            width: 100%;
-            height: 38px;
-            background-color: #181524;
-            border: 1px solid #33264c;
-            border-radius: 4px;
-            padding: 0 10px;
+        .btn-hero {
+            background: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);
             color: #ffffff;
-            font-size: 13px;
-            outline: none;
-        }
-
-        .form-input::placeholder {
-            color: #665c7a;
-        }
-
-        .form-input:focus {
-            border-color: #ff2a5f;
-        }
-
-        /* Butonlar */
-        .btn {
-            width: 100%;
-            height: 40px;
+            padding: 14px 32px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 1rem;
             border: none;
-            border-radius: 6px;
-            font-size: 13px;
-            font-weight: bold;
             cursor: pointer;
-            text-transform: uppercase;
-            transition: opacity 0.2s;
+            box-shadow: 0 0 25px rgba(217, 70, 239, 0.6);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: transform 0.2s;
         }
 
-        .btn:hover {
-            opacity: 0.9;
+        .btn-hero:hover {
+            transform: scale(1.05);
         }
 
-        .btn-pink {
-            background-color: #ff2a5f;
-            color: #ffffff;
+        /* 3'lü Özellik Kartları */
+        .features {
+            display: flex;
+            gap: 20px;
+            max-width: 1050px;
+            width: 100%;
+            margin-top: 60px;
+            padding: 0 20px;
+        }
+
+        .card {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
+            padding: 35px 25px;
+            text-align: center;
+            transition: border-color 0.2s;
+        }
+
+        .card:hover {
+            border-color: rgba(217, 70, 239, 0.5);
+        }
+
+        .card-icon {
+            font-size: 1.5rem;
+            color: #c084fc;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            font-size: 1.05rem;
+            font-weight: 700;
             margin-bottom: 10px;
         }
 
-        .btn-gray {
-            background-color: #3b4554;
-            color: #ffffff;
+        .card p {
+            color: #94a3b8;
+            font-size: 0.85rem;
+            line-height: 1.4;
         }
 
-        /* Alt Siyah Bar (Footer) */
-        footer {
-            width: 100%;
-            height: 25px;
-            background-color: #000000;
+        /* Alt Başlık Alanı */
+        .about-section {
+            margin-top: 80px;
             text-align: center;
-            line-height: 25px;
-            font-size: 10px;
-            color: #666666;
-            z-index: 10;
+            margin-bottom: 50px;
+        }
+
+        .about-title {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #d946ef;
+            position: relative;
+            display: inline-block;
+        }
+
+        .about-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 3px;
+            background-color: #ec4899;
+            border-radius: 2px;
         }
     </style>
 </head>
 <body>
 
-    <!-- Siyah Üst Bar -->
+    <!-- Üst Menü -->
     <header>
-        <div class="logo">MOBİL<span>KALBİM.COM</span></div>
-        <div class="server-status">● Canlı Sunucu Aktif</div>
+        <!-- Sol Üst Logo: İsmi istediğiniz gibi değiştirebilirsiniz -->
+        <div class="logo">Rotinda</div>
+        
+        <nav>
+            <a href="#">Ana Sayfa</a>
+            <a href="#">Hakkımızda</a>
+            <a href="#">Özellikler</a>
+            <a href="#">SSS</a>
+            <a href="#">İletişim</a>
+            <a href="#" class="btn-nav">Sohbete Başla</a>
+        </nav>
     </header>
 
-    <!-- Pembe Duyuru Bandı -->
-    <div class="marquee-bar">
-        <div class="marquee-text">
-            HOŞ GELDİNİZ! MOBİLKALBİM SESLİ VE GÖRÜNTÜLÜ SOHBET PANELİNE BAĞLANMAKTASINIZ. KEYİFLİ SOHBETLER DİLERİZ...
+    <!-- Ana Başlık ve Buton -->
+    <section class="hero">
+        <h1>Türkiye'nin En Kaliteli <span>Sesli Sohbet</span> Platformu</h1>
+        <p>Yeni insanlarla tanışın, sesli sohbetin keyfini çıkarın, gerçek bağlantılar kurun.</p>
+        <button class="btn-hero">Sohbete Başla 🎧</button>
+    </section>
+
+    <!-- Özellik Kartları -->
+    <section class="features">
+        <div class="card">
+            <div class="card-icon">👥</div>
+            <h3>Binlerce Kullanıcı</h3>
+            <p>Her an binlerce kişiyle tanışma ve sohbet etme fırsatı</p>
         </div>
-    </div>
-
-    <!-- Giriş Paneli -->
-    <main>
-        <div class="login-card">
-            <div class="card-header">
-                SOHBET GİRİŞ PANELİ
-            </div>
-            <div class="card-body">
-                <form onsubmit="event.preventDefault();">
-                    <div class="form-group">
-                        <label>NICK / KULLANICI ADI</label>
-                        <input type="text" class="form-input" placeholder="Rumuz giriniz...">
-                    </div>
-
-                    <div class="form-group">
-                        <label>GİRİŞ KANALI</label>
-                        <select class="form-input">
-                            <option>Lobi / Genel Sohbet</option>
-                        </select>
-                    </div>
-
-                    <button type="submit" class="btn btn-pink">SOHBETE GİRİŞ YAP</button>
-                    <button type="button" class="btn btn-gray">MİSAFİR GİRİŞİ</button>
-                </form>
-            </div>
+        <div class="card">
+            <div class="card-icon">🛡️</div>
+            <h3>Güvenli Ortam</h3>
+            <p>7/24 moderatör denetimi ile güvenli sohbet ortamı</p>
         </div>
-    </main>
+        <div class="card">
+            <div class="card-icon">🎙️</div>
+            <h3>HD Ses Kalitesi</h3>
+            <p>Kristal netliğinde sesli iletişim deneyimi</p>
+        </div>
+    </section>
 
-    <!-- Alt Bilgi -->
-    <footer>
-        Mobilkalbim.com © Sesli Chat ve Mobil Panel Sistemleri
-    </footer>
+    <!-- Alt Başlık -->
+    <section class="about-section">
+        <h2 class="about-title">Mobilkalbim.com Rotinda</h2>
+    </section>
 
 </body>
 </html>
