@@ -3,244 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MobilKalbim.com - Türkiye'nin En Kaliteli Sesli Sohbet Platformu</title>
+    <title>Sesli Kalbim</title>
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-        }
-
         body {
-            background: linear-gradient(135deg, #0c0a1a 0%, #16112e 50%, #0a0817 100%);
-            color: #ffffff;
-            min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
-        }
-
-        /* Üst Menü (Navbar) */
-        header {
-            width: 100%;
-            max-width: 1200px;
-            padding: 25px 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        /* LOGO ALANI - Buradaki yazıyı değiştirebilirsiniz */
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: #ffffff;
-            letter-spacing: -0.5px;
-        }
-
-        nav {
-            display: flex;
-            align-items: center;
-            gap: 25px;
-        }
-
-        nav a {
-            color: #b0a8ca;
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: color 0.2s;
-        }
-
-        nav a:hover {
-            color: #ffffff;
-        }
-
-        .btn-nav {
-            background: linear-gradient(135deg, #d946ef 0%, #ec4899 100%);
-            color: #ffffff;
-            padding: 10px 22px;
-            border-radius: 20px;
-            font-weight: 600;
-            font-size: 0.85rem;
-            text-decoration: none;
-            box-shadow: 0 4px 15px rgba(217, 70, 239, 0.4);
-        }
-
-        /* Hero Alanı (Orta Yazılar) */
-        .hero {
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #111;
+            color: #fff;
+            font-family: Arial, sans-serif;
             text-align: center;
-            margin-top: 50px;
-            max-width: 900px;
-            padding: 0 20px;
-        }
-
-        .hero h1 {
-            font-size: 3.2rem;
-            font-weight: 800;
-            margin-bottom: 15px;
-            letter-spacing: -1px;
-        }
-
-        .hero h1 span {
-            color: #d946ef;
-        }
-
-        .hero p {
-            color: #9ca3af;
-            font-size: 1.1rem;
-            margin-bottom: 35px;
-        }
-
-        .btn-hero {
-            background: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);
-            color: #ffffff;
-            padding: 14px 32px;
-            border-radius: 30px;
-            font-weight: 700;
-            font-size: 1rem;
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 0 25px rgba(217, 70, 239, 0.6);
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            transition: transform 0.2s;
-        }
-
-        .btn-hero:hover {
-            transform: scale(1.05);
-        }
-
-        /* 3'lü Özellik Kartları */
-        .features {
-            display: flex;
-            gap: 20px;
-            max-width: 1050px;
-            width: 100%;
-            margin-top: 60px;
-            padding: 0 20px;
-        }
-
-        .card {
-            flex: 1;
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.15);
+     }
+        img {
+            max-width: 90%;
+            height: auto;
             border-radius: 12px;
-            padding: 35px 25px;
-            text-align: center;
-            transition: border-color 0.2s;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
         }
-
-        .card:hover {
-            border-color: rgba(217, 70, 239, 0.5);
-        }
-
-        .card-icon {
-            font-size: 1.5rem;
-            color: #c084fc;
-            margin-bottom: 15px;
-        }
-
-        .card h3 {
-            font-size: 1.05rem;
-            font-weight: 700;
-            margin-bottom: 10px;
-        }
-
-        .card p {
-            color: #94a3b8;
-            font-size: 0.85rem;
-            line-height: 1.4;
-        }
-
-        /* Alt Başlık Alanı */
-        .about-section {
-            margin-top: 80px;
-            text-align: center;
-            margin-bottom: 50px;
-        }
-
-        .about-title {
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: #d946ef;
-            position: relative;
-            display: inline-block;
-        }
-
-        .about-title::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 40px;
-            height: 3px;
-            background-color: #ec4899;
-            border-radius: 2px;
+        h1 {
+            margin-top: 20px;
         }
     </style>
-</head>
-<body>
-
-    <!-- Üst Menü -->
-    <header>
-        <!-- Sol Üst Logo: İsmi istediğiniz gibi değiştirebilirsiniz -->
-        <div class="logo">Rotinda</div>
-        
-        <nav>
-            <a href="#">Ana Sayfa</a>
-            <a href="#">Hakkımızda</a>
-            <a href="#">Özellikler</a>
-            <a href="#">SSS</a>
-            <a href="#">İletişim</a>
-            <a href="#" class="btn-nav">Sohbete Başla</a>
-        </nav>
-    </header>
-
-    <!-- Ana Başlık ve Buton -->
-    <section class="hero">
-        <h1>Türkiye'nin En Kaliteli <span>Sesli Sohbet</span> Platformu Mobilkalbim.com</h1>
-        <p>Yeni insanlarla tanışın, sesli sohbetin keyfini çıkarın, gerçek bağlantılar kurun.</p>
-        <button class="btn-hero">Sohbete Başla 🎧</button>
-    </section>
-
-    <!-- Özellik Kartları -->
-    <section class="features">
-        <div class="card">
-            <div class="card-icon">👥</div>
-            <h3>Binlerce Kullanıcı</h3>
-            <p>Her an binlerce kişiyle tanışma ve sohbet etme fırsatı</p>
-        </div>
-        <div class="card">
-            <div class="card-icon">🛡️</div>
-            <h3>Güvenli Ortam</h3>
-            <p>7/24 moderatör denetimi ile güvenli sohbet ortamı</p>
-        </div>
-        <div class="card">
-            <div class="card-icon">🎙️</div>
-            <h3>HD Ses Kalitesi</h3>
-            <p>Kristal netliğinde sesli iletişim deneyimi</p>
-        </div>
-    </section>
-
-    <!-- Alt Başlık -->
-    ```html
-<section class="about-section">
-    <h2 class="about-title">© 2026 Mobilkalbim.com - Tüm Hakları Saklıdır. Sesli Sohbet Portal Altyapısı.</h2>
-
-    <br><br>
-
-    <p style="color: #ffffff; font-size: 0.85rem; line-height: 1.6; opacity: 0.9; max-width: 1000px; margin: 0 auto;">
-       Mobilkalbim.com, Türkiye'nin önde gelen sesli sohbet platformlarından biridir. 7/24 aktif olan platformumuz, sesli sohbet odalarında yeni insanlarla tanışma, arkadaşlık kurma ve keyifli vakit geçirme imkanı sunmaktadır. Kullanıcı deneyimini en üst seviyede tutmak için sürekli kendimizi geliştiriyor ve platformumuzu güncel teknolojilerle destekliyoruz.
-
-MobilKalbim.com olarak misyonumuz, insanların güvenli bir ortamda sesli iletişim kurabilecekleri, samimi arkadaşlıklar edinebilecekleri, eğlenebilecekleri ve kendilerini ifade edebilecekleri bir platform sunmaktır. Vizyonumuz ise Türkiye'nin en çok tercih edilen ve en kaliteli sesli sohbet sitesi olmaktır.
-
-Platformumuzda kullanıcılarımızın güvenliği ve memnuniyeti bizim için en önemli önceliktir. Bu nedenle, tüm sohbet odalarımız deneyimli moderatörler tarafından 7/24 denetlenmektedir. Kullanıcılarımızın kişisel bilgilerinin gizliliğini korumak için en üst düzey güvenlik önlemlerini alıyoruz.
-
-MobilKalbim.com ailesi olarak, sizlere en iyi sesli sohbet deneyimini sunmak için çalışıyoruz. Siz de hemen sohbete başlayarak, bu özel deneyimin bir parçası olabilirsiniz. Sesli sohbetin keyfini Mobilkalbim.com ile çıkarın!</p>
-</section>
-
+    </head>
+   <body>
+     </html>  
+    <img src="resim.jpg" alt="Sesli Kalbim">  <img src="resim2.jpg" alt="Sesli Kalbim 2">
+     <h1>sᴇsʟɪ ᴋᴀʟʙɪᴍ'ᴇ ʜᴏş ɢᴇʟᴅɪɴɪᴢ αkαsчα  vє ʀᴏᴛtíɴᴅᴀ ʙᴀsᴋᴀɴıɴ sɪᴛᴇsɪ</h1>
 </body>
 </html>
